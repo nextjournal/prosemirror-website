@@ -1,0 +1,16 @@
+<div id=editor style="margin-bottom: 23px"></div>
+<div style="display: none" id="content">
+  <h1>This is a Title Node</h1>
+  <ul>
+    <li>first </li>
+    <li>second copy until here --| |-- ignore the rest</li>
+  </ul>
+  <hr/>
+  <p><em>To reproduce the issues listed below</em> open this page in two tabs and either</p>
+  <ul>
+    <li><p>copy from the beginning of the title above up to the mark in the second item in the list (hence <em>not including the newline at the end of the list item: the slice is open (3-depth) on the right</em>)</p></li>
+    <li><p>copy just the items in the list from the first item up to the mark</p></li>
+    <li><p>copy any slice which ends in the middle of a list item</p>
+  </ul>
+  <p>Finally, go to the other tab and remove the title's text, <strong>paste the slice in the title: The slice is not pasted, no exception is thrown</strong>.</p>
+</div>
