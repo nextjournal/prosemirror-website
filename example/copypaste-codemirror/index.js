@@ -5,7 +5,15 @@ import {Schema} from "prosemirror-model"
 let baseNodes = baseSchema.spec.nodes
 const schema = new Schema({
   nodes: baseNodes.update("code_block", Object.assign(
-    {}, baseNodes.get("code_block"), {isolating: true})),
+      {}, baseNodes.get("code_block"), {isolating: true}))
+        .addToStart("title", {attrs: {placeholder: {default: true}},
+                          content: "text*",
+                          parseDOM: [{tag: "h1"}],
+                          toDOM: function(node){
+                          return ["h1", {class: "nextjournal-title"},
+                                       ["span", {style: "border-bottom: 1px dashed magenta;"}, 0]];
+                          }})
+        .update("doc", {content: "title{1} block*"}),
   marks: baseSchema.spec.marks
 })
 // }
